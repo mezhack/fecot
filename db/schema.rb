@@ -10,12 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_10_152409) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_17_150128) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "athletes", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "cpf"
+    t.date "birthdate", null: false
+    t.string "address", null: false
+    t.integer "grade_id"
+    t.integer "gym_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cpf"], name: "index_athletes_on_cpf", unique: true, where: "(cpf IS NOT NULL)"
+  end
+
+  create_table "grades", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "gyms", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "address", null: false
+    t.decimal "latitude", precision: 10, scale: 6
+    t.decimal "longitude", precision: 10, scale: 6
+    t.integer "responsible_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "athletes", "grades"
+  add_foreign_key "athletes", "gyms"
+  add_foreign_key "gyms", "athletes", column: "responsible_id"
 end

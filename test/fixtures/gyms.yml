@@ -2,16 +2,14 @@
 
 one:
   name: MyString
-  cpf: MyString
-  birthdate: 2024-10-17
   address: MyString
-  grade_id: 1
-  gym_id: 1
+  latitude: 9.99
+  longitude: 9.99
+  responsible_id: 1
 
 two:
   name: MyString
-  cpf: MyString
-  birthdate: 2024-10-17
   address: MyString
-  grade_id: 1
-  gym_id: 1
+  latitude: 9.99
+  longitude: 9.99
+  responsible_id: 1
