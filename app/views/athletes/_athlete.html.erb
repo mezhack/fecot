@@ -1,2 +1,32 @@
-<div id="<%= dom_id athlete %>">
-</div>
+<p>
+  <strong>Name:</strong>
+  <%= athlete.name %>
+</p>
+
+<p>
+  <strong>CPF:</strong>
+  <%= athlete.cpf %>
+</p>
+
+<p>
+  <strong>Birthdate:</strong>
+  <%= athlete.birthdate %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= athlete.address %>
+</p>
+
+<p>
+  <strong>Grade:</strong>
+  <%= athlete.grade.present? ? athlete.grade.name : "No grade assigned" %>
+</p>
+
+<p>
+  <strong>Gym:</strong>
+  <%= athlete.gym.present? ? athlete.gym.name : "No gym assigned" %>
+</p>
+
+<%= link_to 'Edit', edit_athlete_path(athlete) %> |
+<%= link_to 'Back', athletes_path  %>

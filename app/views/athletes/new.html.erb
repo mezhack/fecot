@@ -1,11 +1,52 @@
-<% content_for :title, "New athlete" %>
+<!-- app/views/athletes/new.html.erb -->
+<h1>New Athlete</h1>
 
-<h1>New athlete</h1>
+<%= form_with(model: @athlete, local: true) do |form| %>
+  <% if @athlete.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@athlete.errors.count, "error") %> prohibited this athlete from being saved:</h2>
 
-<%= render "form", athlete: @athlete %>
+      <ul>
+        <% @athlete.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<br>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
 
-<div>
-  <%= link_to "Back to athletes", athletes_path %>
-</div>
+  <div class="field">
+    <%= form.label :cpf %>
+    <%= form.text_field :cpf %>
+  </div>
+
+  <div class="field">
+    <%= form.label :birthdate %>
+    <%= form.date_select :birthdate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :grade %>
+    <%= form.collection_select :grade_id, Grade.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gym %>
+    <%= form.collection_select :gym_id, Gym.all, :id, :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', athletes_path %>

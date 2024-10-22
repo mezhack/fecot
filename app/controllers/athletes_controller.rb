@@ -65,6 +65,6 @@ class AthletesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def athlete_params
-      params.fetch(:athlete, {})
+      params.require(:athlete).permit(:name, :cpf, :birthdate, :address, :grade_id, :gym_id)
     end
 end

@@ -85,4 +85,4 @@ production:
   <<: *default
   database: fecot_production
   username: fecot
-  password: <%= ENV["FECOT_DATABASE_PASSWORD"] %>
+  password: f3c0tm4st3r
